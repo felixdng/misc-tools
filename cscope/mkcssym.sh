@@ -34,6 +34,7 @@ function out_var_set() {
 			IGN_FILE="${OUT_DIR}/.ignore.files"
 			CS_FILE="${OUT_DIR}/csfile.lists"
 			CS_OUT="${OUT_DIR}/cscope.out"
+			TG_OUT="${OUT_DIR}/tags"
 		fi
 	fi
 }
@@ -139,6 +140,7 @@ fi
 # cscope
 if [ -f "${CS_FILE}" ]; then
 	cscope -bkq -f "${CS_OUT}" -i "${CS_FILE}"
+	ctags -f "${TG_OUT}" -L "${CS_FILE}"
 fi
 
 # end
